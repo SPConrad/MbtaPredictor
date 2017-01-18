@@ -15,5 +15,7 @@ namespace MbtaPredictor.Entities
         }
 
         public DbSet<Trip> Trips { get; set; }
+
+        public DbSet<Vehicle> Vehicles { get; set; }
     }
 }
