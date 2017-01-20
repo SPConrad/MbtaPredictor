@@ -10,17 +10,16 @@ namespace MbtaPredictor.Entities
     public class Vehicle
     {
         [Key]
-        public string id { get; set; }
+        public int Vehicle_Id { get; set; }
 
-        public List<String> lat { get; set; }
+        public String Lat { get; set; }
 
-        public List<String> lon { get; set; }
+        public String Lon { get; set; }
 
-        public List<int> bearing { get; set; }
+        public int Bearing { get; set; }
 
-        public List<string> timestamp { get; set; }
-
-        [Key]
-        public int label { get; set; }
+        public string Timestamp { get; set; }
+        
+        public String Label { get; set; }
     }
 }

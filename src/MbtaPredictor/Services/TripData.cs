@@ -53,31 +53,28 @@ namespace MbtaPredictor.Services
 
     public class InMemoryTripData : ITripData
     {
-        static List<Trip> _trips;
-
-
+        private static List<Trip> _trips;
+        private static List<Vehicle> _vehicles;
 
         static InMemoryTripData()
         {
-            List<string> _lon = new List<string>() { "42.11111", "42.88888" };
-            List<string> _lat = new List<string>() { "-71.01317", "-71.30001" };
-            List<int> _bearing = new List<int>() { 101, 202 };
-            List<string> _timestamp = new List<string>() { "1484690000" , "1484695555" };
-
-            List<string> _lon1 = new List<string>() { "42.22222", "42.99999" };
-            List<string> _lat1 = new List<string>() { "-71.00000", "-71.333333" };
-            List<int> _bearing1 = new List<int>() { 117, 188 };
-            List<string> _timestamp1 = new List<string>() { "1484689999", "1484692222" };
             _trips = new List<Trip>
             {
-                new Trip { Id = 1, trip_id = 100,
-                    tripHeadSign = "Braintree", tripName = "4:43 PM to Braintree",
-                    vehicle = new Vehicle { id = "100", bearing = _bearing, label=1745,
-                    lat = _lat, lon = _lon, timestamp = _timestamp} },
-                new Trip { Id = 2, trip_id = 200,
-                    tripHeadSign = "Braintree", tripName = "4:43 PM to Braintree",
-                    vehicle = new Vehicle { id = "200", bearing = _bearing, label=1745,
-                    lat = _lat, lon = _lon, timestamp = _timestamp} }
+                new Trip { Id = 1, Trip_Id = "100",
+                    TripHeadSign = "Braintree", TripName = "4:43 PM to Braintree",
+                    Vehicles = 1 },
+                new Trip { Id = 2, Trip_Id = "200",
+                    TripHeadSign = "Braintree", TripName = "4:53 PM to Braintree",
+                    Vehicles = 2 }
+            };
+
+            _vehicles = new List<Vehicle>
+            {
+                new Vehicle { Vehicle_Id = 1, Lat = "42.11111", Lon = "-71.00000", Bearing = 117, Timestamp = "1484689979", Label = "1745" },
+                new Vehicle { Vehicle_Id = 2, Lat = "42.21111", Lon = "-71.10000", Bearing = 119, Timestamp = "1484689979", Label = "1845" },
+                new Vehicle { Vehicle_Id = 1, Lat = "42.51111", Lon = "-71.20000", Bearing = 127, Timestamp = "1484689989", Label = "1945" },
+                new Vehicle { Vehicle_Id = 2, Lat = "42.31111", Lon = "-71.30000", Bearing = 107, Timestamp = "1484689989", Label = "2045" },
+                new Vehicle { Vehicle_Id = 3, Lat = "42.41111", Lon = "-71.40000", Bearing = 157, Timestamp = "1484689999", Label = "2145" },
             };
         }
 

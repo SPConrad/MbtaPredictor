@@ -17,7 +17,10 @@ namespace MbtaPredictor
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json");
+                .AddJsonFile("appsettings.json")
+                .AddEnvironmentVariables();
+
+            Configuration = builder.Build();
         }
         
         public IConfiguration Configuration { get; set; }
@@ -28,7 +31,8 @@ namespace MbtaPredictor
             services.AddMvc();
             services.AddSingleton(Configuration);
             ///TODO Implement ITrain
-            services.AddScoped<ITripData, InMemoryTripData>();
+            services.AddScoped<ITripData, SqlTripData>();
+            services.AddScoped<IVehicleData, sqlVehicleData>();
             ///TODO Implement MbtaDbContext
             services.AddDbContext<MbtaDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MbtaPredictor")));
         }

@@ -40,7 +40,7 @@ namespace MbtaPredictor.Services
 
         public Vehicle Get(int id)
         {
-            return _context.Vehicles.FirstOrDefault(r => r.Id == id);
+            return _context.Vehicles.FirstOrDefault(r => r.Vehicle_Id == id);
         }
 
         public IEnumerable<Vehicle> GetAll()

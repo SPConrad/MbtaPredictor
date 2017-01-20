@@ -8,14 +8,12 @@ namespace MbtaPredictor.Entities
 {
     public class Trip
     {
-        [Required, Key]
-        public int trip_id { get; set; }
-        [Required]
-        public string tripName { get; set; }
-        [Required]
-        public string tripHeadSign { get; set; }
+        public int Id { get; set; }
+        public string Trip_Id { get; set; }
+        public string TripName { get; set; }
+        public string TripHeadSign { get; set; }
 
         //This will be primary keys of items in the vehicle table
-        public List<int> vehicle { get; set; }
+        public int Vehicles { get; set; }
     }
 }
