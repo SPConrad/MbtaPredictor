@@ -1,0 +1,36 @@
+﻿@model MbtaPredictor.ViewModels.HomePageViewModel
+
+
+<environment names="Development">
+
+</environment>
+
+<environment names="Production">
+
+</environment>
+
+<h1>Welcome!</h1>
+<div>
+    <form action="/GetRoutes" method="get">
+        <div>
+            <label id="routeType"></label>
+            <select id="routeType">
+                <option value="orange">orange</option>
+                <option value="red">red</option>
+                <option value="blue">blue</option>
+                <option value="green">green</option>
+            </select>
+        </div>
+        <div>
+            <input type="submit" value="Save!"/>
+        </div>
+    </form>
+</div>
+
+<div>
+    <form asp-controller="Home" asp-action="GetRoutes" method="post" class="form-horizontal">
+        <select asp-for="routeType" asp-items="Model.RouteTypes"></select>
+    </form>
+</div>
+
+

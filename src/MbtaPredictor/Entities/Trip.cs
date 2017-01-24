@@ -15,5 +15,7 @@ namespace MbtaPredictor.Entities
 
         //This will be primary keys of items in the vehicle table
         public int Vehicles { get; set; }
+
+
     }
 }
