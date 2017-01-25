@@ -5,6 +5,7 @@ namespace MbtaPredictor.ViewModels
 {
     public class HomePageViewModel
     {
+        public RouteTypes routeType;
         public enum RouteTypes
         {
             Red,

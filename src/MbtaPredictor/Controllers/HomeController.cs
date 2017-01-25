@@ -11,6 +11,14 @@ namespace MbtaPredictor.Controllers
         private ITripData _tripData;
         private IVehicleData _vehicleData;
 
+        private string apiKey = "wX9NwuHnZU2ToO7GmGR9uw";
+
+        private string getVehiclesByRouteURL = "http://realtime.mbta.com/developer/api/v2/vehiclesbyroute?api_key=";
+
+        private string routeFragment = "&route=";
+
+        private string jsonFragment = "&format=json";
+
         public IActionResult Index()
         {
             var model = new HomePageViewModel();
@@ -21,10 +29,11 @@ namespace MbtaPredictor.Controllers
 
         [HttpGet]
         [Route("/Home/GetRoutes")]
-        public async Task<IActionResult> GetRoutes(string routeType)
-        { 
+        public async Task<IActionResult> GetRoutes(HomePageViewModel model)
+        {
+            string urlToSend = getVehiclesByRouteURL + apiKey + routeFragment + model.routeType.ToString() + jsonFragment;
             Console.WriteLine("HomeController Get Routes");
-            var result =  await WebCalls.GetUrl(routeType);
+            var result = await WebCalls.GetUrl(urlToSend);
             Console.WriteLine(result);
             ViewData["result"] = result;
             return View();
