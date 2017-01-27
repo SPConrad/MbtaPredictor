@@ -1,8 +1,12 @@
 ﻿using MbtaPredictor.Services;
 using MbtaPredictor.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
+using System.IO;
 using System.Threading.Tasks;
+using MbtaPredictor.Entities;
 
 namespace MbtaPredictor.Controllers
 {
@@ -32,11 +36,20 @@ namespace MbtaPredictor.Controllers
         public async Task<IActionResult> GetRoutes(HomePageViewModel model)
         {
             string urlToSend = getVehiclesByRouteURL + apiKey + routeFragment + model.routeType.ToString() + jsonFragment;
-            Console.WriteLine("HomeController Get Routes");
             var result = await WebCalls.GetUrl(urlToSend);
-            Console.WriteLine(result);
             ViewData["result"] = result;
+            ParseAndSend(result);
             return View();
+        }
+
+        public void ParseAndSend(string data)
+        {
+            JObject json = JObject.Parse(data);
+
+            JsonTextReader reader = new JsonTextReader(new StringReader(data));
+
+            Object direction0 = json.GetValue("direction")[0];
+            Object direction1 = json.GetValue("direction")[1];
         }
 
     }
