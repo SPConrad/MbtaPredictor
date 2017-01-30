@@ -5,8 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace MbtaPredictor.Entities
-{
-    
+{    
     public class Vehicle
     {
         [Key]

@@ -17,7 +17,7 @@ namespace MbtaPredictor.Services
         void Commit();
     }
 
-    public class sqlVehicleData : IVehicleData
+    /*public class sqlVehicleData : IVehicleData
     {
         private MbtaDbContext _context;
 
@@ -72,5 +72,5 @@ namespace MbtaPredictor.Services
         {
             throw new NotImplementedException();
         }
-    }
+    }*/
 }

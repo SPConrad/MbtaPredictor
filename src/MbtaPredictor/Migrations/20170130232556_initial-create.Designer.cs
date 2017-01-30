@@ -8,9 +8,10 @@ using MbtaPredictor.Entities;
 namespace MbtaPredictor.Migrations
 {
     [DbContext(typeof(MbtaDbContext))]
-    partial class MbtaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170130232556_initial-create")]
+    partial class initialcreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.0-rtm-22752")
@@ -18,10 +19,8 @@ namespace MbtaPredictor.Migrations
 
             modelBuilder.Entity("MbtaPredictor.Entities.Trip", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("Trip_Id")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<int>("Trip_Id");
 
                     b.Property<string>("Trip_HeadSign");
 
@@ -42,7 +41,7 @@ namespace MbtaPredictor.Migrations
                     b.HasKey("Trip_Id");
 
                     b.ToTable("Trips");
-                });            
+                });
         }
     }
 }

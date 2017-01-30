@@ -10,7 +10,7 @@ namespace MbtaPredictor.Services
     {
         IEnumerable<Trip> GetAll();
 
-        Trip Get(string id);
+        Trip Get(int id);
 
         Trip Add(Trip newTrip);
 
@@ -40,9 +40,9 @@ namespace MbtaPredictor.Services
             _context.SaveChanges();
         }
 
-        public Trip Get(string id)
+        public Trip Get(int id)
         {
-            return _context.Trips.FirstOrDefault(r => r.Id == id);
+            return _context.Trips.FirstOrDefault(r => r.Trip_Id == id);
         }
 
         public IEnumerable<Trip> GetAll()
@@ -58,7 +58,7 @@ namespace MbtaPredictor.Services
 
         static InMemoryTripData()
         {
-            _trips = new List<Trip>
+            /*_trips = new List<Trip>
             {
                 new Trip { Id = "100",
                     TripHeadSign = "Braintree", TripName = "4:43 PM to Braintree",
@@ -75,7 +75,7 @@ namespace MbtaPredictor.Services
                 new Vehicle { Vehicle_Id = "1", Lat = "42.51111", Lon = "-71.20000", Bearing = 127, Timestamp = "1484689989", Label = "1945" },
                 new Vehicle { Vehicle_Id = "2", Lat = "42.31111", Lon = "-71.30000", Bearing = 107, Timestamp = "1484689989", Label = "2045" },
                 new Vehicle { Vehicle_Id = "3", Lat = "42.41111", Lon = "-71.40000", Bearing = 157, Timestamp = "1484689999", Label = "2145" },
-            };
+            };*/
         }
 
         public IEnumerable<Trip> GetAll()
@@ -83,9 +83,9 @@ namespace MbtaPredictor.Services
             return _trips;
         }
 
-        public Trip Get(string id)
+        public Trip Get(int id)
         {
-            return _trips.FirstOrDefault(r => r.Id == id); 
+            return _trips.FirstOrDefault(r => r.Trip_Id == id); 
         }
 
         public Trip Add(Trip newTrip)

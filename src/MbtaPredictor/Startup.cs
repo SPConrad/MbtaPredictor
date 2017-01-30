@@ -32,7 +32,7 @@ namespace MbtaPredictor
             services.AddSingleton(Configuration);
             ///TODO Implement ITrain
             services.AddScoped<ITripData, SqlTripData>();
-            services.AddScoped<IVehicleData, sqlVehicleData>();
+            //services.AddScoped<IVehicleData, sqlVehicleData>();
             ///TODO Implement MbtaDbContext
             services.AddDbContext<MbtaDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MbtaPredictor")));
         }
