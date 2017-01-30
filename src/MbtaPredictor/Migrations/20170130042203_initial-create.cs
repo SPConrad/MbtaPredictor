@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace MbtaPredictor.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class initialcreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,12 +13,10 @@ namespace MbtaPredictor.Migrations
                 name: "Trips",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<string>(nullable: false),
                     TripHeadSign = table.Column<string>(nullable: true),
                     TripName = table.Column<string>(nullable: true),
-                    Trip_Id = table.Column<string>(nullable: true),
-                    Vehicles = table.Column<int>(nullable: false)
+                    Vehicle = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -29,17 +27,18 @@ namespace MbtaPredictor.Migrations
                 name: "Vehicles",
                 columns: table => new
                 {
-                    Vehicle_Id = table.Column<int>(nullable: false)
+                    id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Bearing = table.Column<int>(nullable: false),
                     Label = table.Column<string>(nullable: true),
                     Lat = table.Column<string>(nullable: true),
                     Lon = table.Column<string>(nullable: true),
-                    Timestamp = table.Column<string>(nullable: true)
+                    Timestamp = table.Column<string>(nullable: true),
+                    Vehicle_Id = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Vehicles", x => x.Vehicle_Id);
+                    table.PrimaryKey("PK_Vehicles", x => x.id);
                 });
         }
 

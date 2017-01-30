@@ -10,7 +10,8 @@ namespace MbtaPredictor.Entities
     public class Vehicle
     {
         [Key]
-        public int Vehicle_Id { get; set; }
+        public int id { get; set; }
+        public String Vehicle_Id { get; set; }
 
         public String Lat { get; set; }
 

@@ -10,7 +10,7 @@ namespace MbtaPredictor.Services
     {
         IEnumerable<Vehicle> GetAll();
 
-        Vehicle Get(int id);
+        Vehicle Get(string id);
 
         Vehicle Add(Vehicle newVehicle);
 
@@ -38,7 +38,7 @@ namespace MbtaPredictor.Services
             _context.SaveChanges();
         }
 
-        public Vehicle Get(int id)
+        public Vehicle Get(string id)
         {
             return _context.Vehicles.FirstOrDefault(r => r.Vehicle_Id == id);
         }
@@ -63,7 +63,7 @@ namespace MbtaPredictor.Services
             throw new NotImplementedException();
         }
 
-        public Vehicle Get(int id)
+        public Vehicle Get(string id)
         {
             throw new NotImplementedException();
         }

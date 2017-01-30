@@ -10,7 +10,7 @@ namespace MbtaPredictor.Services
     {
         IEnumerable<Trip> GetAll();
 
-        Trip Get(int id);
+        Trip Get(string id);
 
         Trip Add(Trip newTrip);
 
@@ -40,7 +40,7 @@ namespace MbtaPredictor.Services
             _context.SaveChanges();
         }
 
-        public Trip Get(int id)
+        public Trip Get(string id)
         {
             return _context.Trips.FirstOrDefault(r => r.Id == id);
         }
@@ -60,21 +60,21 @@ namespace MbtaPredictor.Services
         {
             _trips = new List<Trip>
             {
-                new Trip { Id = 1, Trip_Id = "100",
+                new Trip { Id = "100",
                     TripHeadSign = "Braintree", TripName = "4:43 PM to Braintree",
-                    Vehicles = 1 },
-                new Trip { Id = 2, Trip_Id = "200",
+                    Vehicle = "1" },
+                new Trip { Id = "200",
                     TripHeadSign = "Braintree", TripName = "4:53 PM to Braintree",
-                    Vehicles = 2 }
+                    Vehicle = "2" }
             };
 
             _vehicles = new List<Vehicle>
             {
-                new Vehicle { Vehicle_Id = 1, Lat = "42.11111", Lon = "-71.00000", Bearing = 117, Timestamp = "1484689979", Label = "1745" },
-                new Vehicle { Vehicle_Id = 2, Lat = "42.21111", Lon = "-71.10000", Bearing = 119, Timestamp = "1484689979", Label = "1845" },
-                new Vehicle { Vehicle_Id = 1, Lat = "42.51111", Lon = "-71.20000", Bearing = 127, Timestamp = "1484689989", Label = "1945" },
-                new Vehicle { Vehicle_Id = 2, Lat = "42.31111", Lon = "-71.30000", Bearing = 107, Timestamp = "1484689989", Label = "2045" },
-                new Vehicle { Vehicle_Id = 3, Lat = "42.41111", Lon = "-71.40000", Bearing = 157, Timestamp = "1484689999", Label = "2145" },
+                new Vehicle { Vehicle_Id = "1", Lat = "42.11111", Lon = "-71.00000", Bearing = 117, Timestamp = "1484689979", Label = "1745" },
+                new Vehicle { Vehicle_Id = "2", Lat = "42.21111", Lon = "-71.10000", Bearing = 119, Timestamp = "1484689979", Label = "1845" },
+                new Vehicle { Vehicle_Id = "1", Lat = "42.51111", Lon = "-71.20000", Bearing = 127, Timestamp = "1484689989", Label = "1945" },
+                new Vehicle { Vehicle_Id = "2", Lat = "42.31111", Lon = "-71.30000", Bearing = 107, Timestamp = "1484689989", Label = "2045" },
+                new Vehicle { Vehicle_Id = "3", Lat = "42.41111", Lon = "-71.40000", Bearing = 157, Timestamp = "1484689999", Label = "2145" },
             };
         }
 
@@ -83,14 +83,14 @@ namespace MbtaPredictor.Services
             return _trips;
         }
 
-        public Trip Get(int id)
+        public Trip Get(string id)
         {
             return _trips.FirstOrDefault(r => r.Id == id); 
         }
 
         public Trip Add(Trip newTrip)
         {
-            newTrip.Id = _trips.Max(r => r.Id) + 1;
+            
             _trips.Add(newTrip);
 
             return newTrip;

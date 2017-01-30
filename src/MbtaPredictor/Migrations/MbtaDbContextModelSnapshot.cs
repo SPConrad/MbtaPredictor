@@ -18,16 +18,14 @@ namespace MbtaPredictor.Migrations
 
             modelBuilder.Entity("MbtaPredictor.Entities.Trip", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("TripHeadSign");
 
                     b.Property<string>("TripName");
 
-                    b.Property<string>("Trip_Id");
-
-                    b.Property<int>("Vehicles");
+                    b.Property<string>("Vehicle");
 
                     b.HasKey("Id");
 
@@ -36,7 +34,7 @@ namespace MbtaPredictor.Migrations
 
             modelBuilder.Entity("MbtaPredictor.Entities.Vehicle", b =>
                 {
-                    b.Property<int>("Vehicle_Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("Bearing");
@@ -49,7 +47,9 @@ namespace MbtaPredictor.Migrations
 
                     b.Property<string>("Timestamp");
 
-                    b.HasKey("Vehicle_Id");
+                    b.Property<string>("Vehicle_Id");
+
+                    b.HasKey("id");
 
                     b.ToTable("Vehicles");
                 });

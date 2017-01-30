@@ -4,9 +4,12 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Linq;
 using System.IO;
 using System.Threading.Tasks;
 using MbtaPredictor.Entities;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace MbtaPredictor.Controllers
 {
@@ -22,6 +25,12 @@ namespace MbtaPredictor.Controllers
         private string routeFragment = "&route=";
 
         private string jsonFragment = "&format=json";
+
+        public HomeController(ITripData tripData, IVehicleData vehicleData)
+        {
+            _tripData = tripData;
+            _vehicleData = vehicleData;
+        }
 
         public IActionResult Index()
         {
@@ -50,6 +59,41 @@ namespace MbtaPredictor.Controllers
 
             Object direction0 = json.GetValue("direction")[0];
             Object direction1 = json.GetValue("direction")[1];
+
+            JObject jDirection0 = (JObject)json["direction"][0];
+
+            List<JObject> direction0List = new List<JObject>();
+
+            jDirection0["trip"].Count();
+
+            foreach (JObject token in jDirection0["trip"])
+            {
+                direction0List.Add(token);
+
+                Vehicle _vehicle = new Vehicle();
+                Trip _trip = new Trip();
+
+                //_trip.Id = token["id"];
+                _trip.Id = token["trip_id"].ToString();
+                _trip.TripHeadSign = token["trip_headsign"].ToString();
+                _trip.TripName = token["trip_name"].ToString();
+                _trip.Vehicle = token["vehicle"]["vehicle_id"].ToString();
+
+                //Id = Int32.Parse(token["trip_id"].ToString());
+                _vehicle.Vehicle_Id = token["vehicle"]["vehicle_id"].ToString();
+                _vehicle.Lat = token["vehicle"]["vehicle_lat"].ToString();
+                _vehicle.Lon = token["vehicle"]["vehicle_lon"].ToString();
+                _vehicle.Bearing = Int32.Parse(token["vehicle"]["vehicle_bearing"].ToString());
+                _vehicle.Timestamp = token["vehicle"]["vehicle_timestamp"].ToString();
+                _vehicle.Label = token["vehicle"]["vehicle_label"].ToString();
+
+                _vehicleData.Commit();
+                _vehicleData.Add(_vehicle);
+                _tripData.Commit();
+                _tripData.Add(_trip);
+
+
+            }
         }
 
     }
