@@ -8,7 +8,7 @@ using MbtaPredictor.Entities;
 namespace MbtaPredictor.Migrations
 {
     [DbContext(typeof(MbtaDbContext))]
-    [Migration("20170130232556_initial-create")]
+    [Migration("20170131204136_initial-create")]
     partial class initialcreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -19,10 +19,12 @@ namespace MbtaPredictor.Migrations
 
             modelBuilder.Entity("MbtaPredictor.Entities.Trip", b =>
                 {
-                    b.Property<int>("Trip_Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Trip_HeadSign");
+
+                    b.Property<int>("Trip_Id");
 
                     b.Property<string>("Trip_Name");
 
@@ -38,7 +40,7 @@ namespace MbtaPredictor.Migrations
 
                     b.Property<string>("Vehicle_Timestamp");
 
-                    b.HasKey("Trip_Id");
+                    b.HasKey("Id");
 
                     b.ToTable("Trips");
                 });

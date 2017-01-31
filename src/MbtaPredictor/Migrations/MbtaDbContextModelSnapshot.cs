@@ -21,9 +21,9 @@ namespace MbtaPredictor.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("Trip_Id");
-
                     b.Property<string>("Trip_HeadSign");
+
+                    b.Property<int>("Trip_Id");
 
                     b.Property<string>("Trip_Name");
 
@@ -39,10 +39,10 @@ namespace MbtaPredictor.Migrations
 
                     b.Property<string>("Vehicle_Timestamp");
 
-                    b.HasKey("Trip_Id");
+                    b.HasKey("Id");
 
                     b.ToTable("Trips");
-                });            
+                });
         }
     }
 }

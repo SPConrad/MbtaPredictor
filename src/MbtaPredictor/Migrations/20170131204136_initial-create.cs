@@ -15,8 +15,8 @@ namespace MbtaPredictor.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Trip_id = table.Column<int>(nullable: false),
                     Trip_HeadSign = table.Column<string>(nullable: true),
+                    Trip_Id = table.Column<int>(nullable: false),
                     Trip_Name = table.Column<string>(nullable: true),
                     Vehicle_Bearing = table.Column<string>(nullable: true),
                     Vehicle_Id = table.Column<string>(nullable: true),

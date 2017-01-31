@@ -13,7 +13,5 @@ namespace MbtaPredictor.ViewModels
         public string tripName { get; set; }
 
         public string tripHeadSign { get; set; }
-
-        public Vehicle vehicle { get; set; }
     }
 }
